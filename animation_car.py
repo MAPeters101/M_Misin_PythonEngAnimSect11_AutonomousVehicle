@@ -94,6 +94,16 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     plt.grid(True)
     plt.legend(loc='lower right',fontsize='small')
 
+    # Create the function for the Y-position
+    ax4=fig.add_subplot(gs[2,2],facecolor=(0.9,0.9,0.9))
+    Y_position_reference,=ax4.plot(t,yr,'-b',linewidth=1,label='Y - reference [m]')
+    Y_position,=ax4.plot([],[],'-r',linewidth=1,label='Y - position [m]')
+    plt.xlim(0,t[-1])
+    plt.ylim(np.min(y)-2,np.max(y)+2)
+    plt.xlabel('time [s]',fontsize=15)
+    plt.grid(True)
+    plt.legend(loc='lower right',fontsize='small')
+
 
 
     car_ani=animation.FuncAnimation(fig,update_plot,
