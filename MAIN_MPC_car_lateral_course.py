@@ -20,7 +20,7 @@ or anything else it was used for fails - the author is NOT RESPONSIBLE!
 
 import numpy as np
 import matplotlib.pyplot as plt
-import support_files_car as sfc
+import support_files_car_course as sfc
 import animation_car as ac
 import matplotlib.gridspec as gridspec
 import matplotlib.animation as animation
