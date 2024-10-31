@@ -75,6 +75,17 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     bbox_props_steer_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='r',lw=1)
     steer_angle_text=ax1.text(25,-2.5,'',size='20',color='r',bbox=bbox_props_steer_angle)
 
+    # Create the function for the steering wheel
+    ax2=fig.add_subplot(gs[2,0],facecolor=(0.9,0.9,0.9))
+    steering_wheel,=ax2.plot([],[],'-r',linewidth=1,label='steering angle [rad]')
+    plt.xlim(0,t[-1])
+    plt.ylim(np.min(delta)-0.1,np.max(delta)+0.1)
+    plt.xlabel('time [s]',fontsize=15)
+    plt.grid(True)
+    plt.legend(loc='lower right',fontsize='small')
+
+
+
     car_ani=animation.FuncAnimation(fig,update_plot,
         frames=frame_amount,interval=20,repeat=True,blit=True)
     plt.show()
