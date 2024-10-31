@@ -84,6 +84,16 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     plt.grid(True)
     plt.legend(loc='lower right',fontsize='small')
 
+    # Create the function for the yaw angle
+    ax3=fig.add_subplot(gs[2,1],facecolor=(0.9,0.9,0.9))
+    yaw_angle_reference,=ax3.plot(t,psir,'-b',linewidth=1,label='yaw reference [rad]')
+    yaw_angle,=ax3.plot([],[],'-r',linewidth=1,label='yaw angle [rad]')
+    plt.xlim(0,t[-1])
+    plt.ylim(np.min(psi)-0.1,np.max(psi)+0.1)
+    plt.xlabel('time [s]',fontsize=15)
+    plt.grid(True)
+    plt.legend(loc='lower right',fontsize='small')
+
 
 
     car_ani=animation.FuncAnimation(fig,update_plot,
