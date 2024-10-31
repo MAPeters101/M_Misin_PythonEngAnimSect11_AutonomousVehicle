@@ -25,9 +25,12 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
         bike_1_front_wheel_extension.set_data([lf*np.cos(psi[num]),lf*np.cos(psi[num])+40*lf*np.cos(psi[num]+delta[num])],
             [lf*np.sin(psi[num]),lf*np.sin(psi[num])+40*lf*np.sin(psi[num]+delta[num])])
 
+        yaw_angle_text.set_text(str(round(psi[num],2))+' rad')
+        steer_angle_text.set_text(str(round(delta[num],2))+' rad')
 
         return bike_determined,bike_1,bike_1_body,bike_1_body_extension, \
-            bike_1_back_wheel,bike_1_front_wheel,bike_1_front_wheel_extension
+            bike_1_back_wheel,bike_1_front_wheel,bike_1_front_wheel_extension, \
+            yaw_angle_text,steer_angle_text
 
     # Set up your figure properties
     fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
@@ -66,11 +69,11 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     bike_1_front_wheel,=ax1.plot([],[],'r',linewidth=4)
     bike_1_front_wheel_extension,=ax1.plot([],[],'--r',linewidth=1)
 
-    bbox_props_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='k',lw='1')
-    yaw_angle=ax1.text(25,2,'',size='20',color='k',bbox=bbox_props_angle)
+    bbox_props_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='k',lw=1)
+    yaw_angle_text=ax1.text(25,2,'',size='20',color='k',bbox=bbox_props_angle)
 
-    bbox_props_steer_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='r',lw='1')
-    steer_angle=ax1.text(25,-2.5,'',size='20',color='r',bbox=bbox_props_steer_angle)
+    bbox_props_steer_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='r',lw=1)
+    steer_angle_text=ax1.text(25,-2.5,'',size='20',color='r',bbox=bbox_props_steer_angle)
 
     car_ani=animation.FuncAnimation(fig,update_plot,
         frames=frame_amount,interval=20,repeat=True,blit=True)
