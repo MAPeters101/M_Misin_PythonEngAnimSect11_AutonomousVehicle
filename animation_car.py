@@ -5,8 +5,10 @@ import numpy as np
 
 def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     def update_plot(num):
+        bike_determined.set_data(xr[0:num],y[0:num])
 
-        return
+
+        return bike_determined,
 
     # Set up your figure properties
     fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
@@ -30,11 +32,11 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     ref_trajectory=ax0.plot(xr,yr,'b',linewidth=1) # reference trajectory
 
     # Draw a motorcycle
-    car_1,=ax0.plot([],[],'k',linewidth=3)
-    car_determined,=ax0.plot([],[],'-r',linewidth=1)
+    bike_1,=ax0.plot([],[],'k',linewidth=3)
+    bike_determined,=ax0.plot([],[],'-r',linewidth=1)
 
-    # car_ani=animation.FuncAnimation(fig,update_plot,
-    #     frames=frame_amount,interval=20,repeat=True,blit=True)
+    car_ani=animation.FuncAnimation(fig,update_plot,
+        frames=frame_amount,interval=20,repeat=True,blit=True)
     plt.show()
 
     return
