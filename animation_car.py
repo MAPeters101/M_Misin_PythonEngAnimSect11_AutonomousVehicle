@@ -37,6 +37,13 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     bike_1,=ax0.plot([],[],'k',linewidth=3)
     bike_determined,=ax0.plot([],[],'-r',linewidth=1)
 
+    # Create an object for the motorcycle (zoomed)
+    ax1=fig.add_subplot(gs[1,:],facecolor=(0.9,0.9,0.9))
+    plt.xlim(-5,30)
+    plt.ylim(-4,4)
+    plt.ylabel('Y-distance [m]',fontsize=15)
+    neutral_line=ax1.plot([-50,50],[0,0],'k',linewidth=1)
+
     car_ani=animation.FuncAnimation(fig,update_plot,
         frames=frame_amount,interval=20,repeat=True,blit=True)
     plt.show()
