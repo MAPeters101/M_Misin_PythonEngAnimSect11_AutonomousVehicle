@@ -43,6 +43,17 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     plt.ylim(-4,4)
     plt.ylabel('Y-distance [m]',fontsize=15)
     neutral_line=ax1.plot([-50,50],[0,0],'k',linewidth=1)
+    bike_1_body,=ax1.plot([],[],'k',linewidth=3)
+    bike_1_body_extension,=ax1.plot([],[],'--k',linewidth=1)
+    bike_1_back_wheel,=ax1.plot([],[],'r',linewidth=4)
+    bike_1_front_wheel,=ax1.plot([],[],'r',linewidth=4)
+    bike_1_front_wheel_extension,=ax1.plot([],[],'--r',linewidth=1)
+
+    bbox_props_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='k',lw='1')
+    yaw_angle=ax1.text(25,2,'',size='20',color='k',bbox=bbox_props_angle)
+
+    bbox_props_steer_angle=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='r',lw='1')
+    steer_angle=ax1.text(25,-2.5,'',size='20',color='r',bbox=bbox_props_steer_angle)
 
     car_ani=animation.FuncAnimation(fig,update_plot,
         frames=frame_amount,interval=20,repeat=True,blit=True)
