@@ -28,9 +28,13 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
         yaw_angle_text.set_text(str(round(psi[num],2))+' rad')
         steer_angle_text.set_text(str(round(delta[num],2))+' rad')
 
+        steering_wheel.set_data(t[0:num],delta[0:num])
+        yaw_angle.set_data(t[0:num],psi[0:num])
+        Y_position.set_data(t[0:num],y[0:num])
+
         return bike_determined,bike_1,bike_1_body,bike_1_body_extension, \
             bike_1_back_wheel,bike_1_front_wheel,bike_1_front_wheel_extension, \
-            yaw_angle_text,steer_angle_text
+            yaw_angle_text,steer_angle_text,steering_wheel,yaw_angle,Y_position
 
     # Set up your figure properties
     fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
