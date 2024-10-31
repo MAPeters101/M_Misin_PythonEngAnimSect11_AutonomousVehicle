@@ -10,7 +10,12 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
         bike_1.set_data([xr[num]-lr*np.cos(psi[num]),xr[num]+lf*np.cos(psi[num])],
             [y[num]-lr*np.sin(psi[num]),y[num]+lf*np.sin(psi[num])])
 
-        return bike_determined,bike_1,
+        bike_1_body.set_data([0-lr*np.cos(psi[num]),0+lf*np.cos(psi[num])],
+            [0-lr*np.sin(psi[num]),0+lf*np.sin(psi[num])])
+
+
+
+        return bike_determined,bike_1,bike_1_body,
 
     # Set up your figure properties
     fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
