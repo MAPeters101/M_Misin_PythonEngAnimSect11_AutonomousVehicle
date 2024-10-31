@@ -19,8 +19,8 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
         bike_1_back_wheel.set_data([-(lr+0.5)*np.cos(psi[num]),-(lr-0.5)*np.cos(psi[num])],
             [-(lr+0.5)*np.sin(psi[num]),-(lr-0.5)*np.sin(psi[num])])
 
-        bike_1_front_wheel.set_data([lf*np.cos(psi[num])-0.5,lf*np.cos(psi[num])+0.5],
-            [lf*np.sin(psi[num]),lf*np.sin(psi[num])])
+        bike_1_front_wheel.set_data([lf*np.cos(psi[num])-0.5*np.cos(psi[num]+delta[num]),lf*np.cos(psi[num])+0.5*np.cos(psi[num]+delta[num])],
+            [lf*np.sin(psi[num])-0.5*np.sin(psi[num]+delta[num]),lf*np.sin(psi[num])+0.5*np.sin(psi[num]+delta[num])])
 
 
 
