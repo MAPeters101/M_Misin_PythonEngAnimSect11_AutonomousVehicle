@@ -17,6 +17,22 @@ def vehicle_animation(t,y,psi,delta,xr,yr,psir,frame_amount,lf,lr,lane_width):
     plt.xlim(xr[0],xr[frame_amount])
     plt.ylabel('Y-distance [m]',fontsize=15)
 
+    # Plot the lanes
+    lane_1,=ax0.plot([xr[0],xr[frame_amount]],[lane_width/2,lane_width/2],'k',linewidth=0.2)
+    lane_2,=ax0.plot([xr[0],xr[frame_amount]],[-lane_width/2,-lane_width/2],'k',linewidth=0.2)
+
+    lane_3,=ax0.plot([xr[0],xr[frame_amount]],[lane_width/2+lane_width,lane_width/2+lane_width],'k',linewidth=0.2)
+    lane_4,=ax0.plot([xr[0],xr[frame_amount]],[-lane_width/2-lane_width,-lane_width/2-lane_width],'k',linewidth=0.2)
+
+    lane_5,=ax0.plot([xr[0],xr[frame_amount]],[lane_width/2+2*lane_width,lane_width/2+2*lane_width],'k',linewidth=3)
+    lane_6,=ax0.plot([xr[0],xr[frame_amount]],[-lane_width/2-2*lane_width,-lane_width/2-2*lane_width],'k',linewidth=3)
+
+    ref_trajectory=ax0.plot(xr,yr,'b',linewidth=1) # reference trajectory
+
+    # Draw a motorcycle
+    car_1,=ax0.plot([],[],'k',linewidth=3)
+    car_determined,=ax0.plot([],[],'-r',linewidth=1)
+
     # car_ani=animation.FuncAnimation(fig,update_plot,
     #     frames=frame_amount,interval=20,repeat=True,blit=True)
     plt.show()
